@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
-
 import br.edu.iff.pooa.trabalho02_2018_1.R;
 import br.edu.iff.pooa.trabalho02_2018_1.model.Eleitor;
 
@@ -29,8 +27,7 @@ public class EleitorAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.cardview_eleitor, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.cardview_eleitor, parent, false);
         EleitorViewHolder eleitorViewHolder = new EleitorViewHolder(view);
         return eleitorViewHolder;
     }
