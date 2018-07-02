@@ -38,7 +38,7 @@
         android:layout_marginTop="16dp"
         android:text="Zona"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/secao"
+        app:layout_constraintEnd_toStartOf="@+id/cargo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTituloEleitor" />
 
