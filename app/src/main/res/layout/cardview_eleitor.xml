@@ -33,14 +33,12 @@
         android:id="@+id/textViewZonaEleitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Zona"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/cargo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloEleitor" />
+        app:layout_constraintStart_toEndOf="@+id/zona"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
     <TextView
         android:id="@+id/textViewSecaoEleitor"
@@ -99,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
         android:text="@string/zona"
         app:layout_constraintStart_toStartOf="parent"

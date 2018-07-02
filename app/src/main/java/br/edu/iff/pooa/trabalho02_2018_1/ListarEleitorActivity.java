@@ -31,7 +31,7 @@ public class ListarEleitorActivity extends AppCompatActivity implements ClickRec
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListarEleitorActivity.this, InfoEleitorActivity.class);
-                intent.putExtra("id",0);
+                intent.putExtra("id","0");
                 startActivity(intent);
             }
         });
@@ -46,7 +46,7 @@ public class ListarEleitorActivity extends AppCompatActivity implements ClickRec
     public void onClick(Object object) {
         Eleitor eleitor = (Eleitor) object;
         Intent intent = new Intent(ListarEleitorActivity.this, InfoEleitorActivity.class);
-        intent.putExtra("id",eleitor.getId());
+        intent.putExtra("id", eleitor.getId());
         startActivity(intent);
 
     }
@@ -65,6 +65,7 @@ public class ListarEleitorActivity extends AppCompatActivity implements ClickRec
 
     @Override
     public void finish(){
+        super.finish();
         realm.close();
     }
 }

@@ -1,6 +1,8 @@
 package br.edu.iff.pooa.trabalho02_2018_1;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -10,10 +12,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import br.edu.iff.pooa.trabalho02_2018_1.model.Eleitor;
 import io.realm.Realm;
@@ -23,7 +27,7 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
     private ViewHolder mViewHolder = new ViewHolder();
     private Realm realm;
     private Eleitor eleitor;
-    private int idEleitor;
+    private String idEleitor;
     SimpleDateFormat maskData = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
@@ -40,16 +44,21 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
         this.mViewHolder.municipioEleitor = (EditText) findViewById(R.id.edtTextInfoMunicipioEleitor);
         this.mViewHolder.salvarEleitor = (Button) findViewById(R.id.buttonSalvarEleitor);
         this.mViewHolder.habilitarEdicaoEleitor = (Switch) findViewById(R.id.switchHabilitarEdicaoEleitor);
+        this.mViewHolder.excluir = findViewById(R.id.excluirEleitor);
 
+        this.mViewHolder.excluir.setOnClickListener(this);
         this.mViewHolder.salvarEleitor.setOnClickListener(this);
 
         Intent intent = getIntent();
-        idEleitor = (Integer) intent.getSerializableExtra("id");
-        if (idEleitor == 0)
+        idEleitor = (String) intent.getSerializableExtra("id");
+        if (idEleitor.equals("0"))
         {
             this.mViewHolder.habilitarEdicaoEleitor.setVisibility(View.INVISIBLE);
             this.mViewHolder.habilitarEdicaoEleitor.setActivated(false);
             this.mViewHolder.habilitarEdicaoEleitor.setSplitTrack(false);
+            this.mViewHolder.excluir.setVisibility(View.INVISIBLE);
+            this.mViewHolder.excluir.setClickable(false);
+
         }
 
         povoate();
@@ -61,7 +70,6 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
                 if (isChecked){
                     mViewHolder.nomeEleitor.setEnabled(true);
                     mViewHolder.nomeMaeEleitor.setEnabled(true);
-                    mViewHolder.dataNascimentoEleitor.setInputType(InputType.TYPE_CLASS_DATETIME);
                     mViewHolder.dataNascimentoEleitor.setEnabled(true);
                     mViewHolder.tituloEleitor.setInputType(InputType.TYPE_CLASS_NUMBER);
                     mViewHolder.tituloEleitor.setEnabled(true);
@@ -90,31 +98,65 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.buttonSalvarEleitor){
-            atualizar();
-            povoate();
-            finish();
+
+            if(     mViewHolder.nomeEleitor.getText().toString().equals("") ||
+                    mViewHolder.nomeMaeEleitor.getText().toString().equals("") ||
+                    mViewHolder.dataNascimentoEleitor.getText().toString().equals("") ||
+                    mViewHolder.tituloEleitor.getText().toString().equals("") ||
+                    mViewHolder.zonaEleitor.getText().toString().equals("") ||
+                    mViewHolder.secaoEleitor.getText().toString().equals("") ||
+                    mViewHolder.municipioEleitor.getText().toString().equals("")){
+                Toast.makeText(getApplicationContext(), "Existem campos em branco!", Toast.LENGTH_SHORT).show();
+            } else{
+                atualizar();
+                finish();
+                Toast.makeText(getApplicationContext(), "ue!", Toast.LENGTH_SHORT).show();
+            }
         }
+
+        if (id == R.id.excluirEleitor){
+            excluir();
+        }
+
+    }
+
+    private void excluir() {
+
+        new AlertDialog.Builder(this).setTitle("Deletar Eleitor").
+                setMessage("Tem certeza que deseja excluir este Eleitor?").
+                setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        eleitor.deleteFromRealm();
+                        realm.commitTransaction();
+                        realm.close();
+                        finish();
+                    }
+                }).setNegativeButton("Não", null).show();
     }
 
     public static class ViewHolder{
         EditText nomeEleitor, nomeMaeEleitor, dataNascimentoEleitor, tituloEleitor, zonaEleitor, secaoEleitor, municipioEleitor;
         Button salvarEleitor;
         Switch habilitarEdicaoEleitor;
+        TextView excluir;
     }
 
     public void atualizar() {
 
-        int token;
+        String token;
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        if (idEleitor == 0) {
+
+        if (idEleitor.equals("0")) {
             eleitor = realm.where(Eleitor.class).equalTo("id", idEleitor).findFirst();
             if (eleitor == null) {
-                token = 1;
-            } else {
-                token = realm.where(Eleitor.class).max("id").intValue() + 1;
+                token = getRandomHexString();
+                eleitor = new Eleitor();
+                eleitor.setId(token);
             }
-            eleitor.setId(token);
         }
 
         eleitor.setNome(mViewHolder.nomeEleitor.getText().toString());
@@ -140,17 +182,34 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
         eleitor = realm.where(Eleitor.class).equalTo("id", idEleitor).findFirst();
         realm.close();
 
-        if (idEleitor != 0){
+        if (!idEleitor.equals("0")){
+            mViewHolder.nomeEleitor.setEnabled(false);
+            mViewHolder.nomeMaeEleitor.setEnabled(false);
+            mViewHolder.dataNascimentoEleitor.setEnabled(false);
+            mViewHolder.tituloEleitor.setEnabled(false);
+            mViewHolder.zonaEleitor.setEnabled(false);
+            mViewHolder.secaoEleitor.setEnabled(false);
+            mViewHolder.municipioEleitor.setEnabled(false);
+            mViewHolder.salvarEleitor.setEnabled(false);
+
             mViewHolder.nomeEleitor.setText(eleitor.getNome());
             mViewHolder.nomeMaeEleitor.setText(eleitor.getNomeMae());
-            mViewHolder.dataNascimentoEleitor.setInputType(InputType.TYPE_CLASS_TEXT);
             mViewHolder.dataNascimentoEleitor.setText(eleitor.getDataNascimento().toString());
             mViewHolder.tituloEleitor.setInputType(InputType.TYPE_CLASS_TEXT);
             mViewHolder.tituloEleitor.setText(eleitor.getNumeroTitulo());
             mViewHolder.zonaEleitor.setText(eleitor.getZona());
             mViewHolder.secaoEleitor.setText(eleitor.getSecao());
             mViewHolder.municipioEleitor.setText(eleitor.getMunicipio());
-            mViewHolder.salvarEleitor.setText(eleitor.getMunicipio());
         }
+    }
+
+    public String getRandomHexString(){
+        int numchars = 6;
+        Random r = new Random();
+        StringBuffer sb = new StringBuffer();
+        while(sb.length() < numchars){
+            sb.append(Integer.toHexString(r.nextInt()));
+        }
+        return sb.toString().substring(0, numchars);
     }
 }
