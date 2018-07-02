@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".ListarEleitorActivity" />
         <activity android:name=".InfoEleitorActivity" />
-        <activity android:name=".ListarCandidatoActivity"></activity>
+        <activity android:name=".ListarCandidatoActivity" />
+        <activity android:name=".InfoCandidatoActivity"></activity>
     </application>
 
 </manifest>

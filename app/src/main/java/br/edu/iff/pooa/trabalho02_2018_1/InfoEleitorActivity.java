@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Random;
 
 import br.edu.iff.pooa.trabalho02_2018_1.model.Eleitor;

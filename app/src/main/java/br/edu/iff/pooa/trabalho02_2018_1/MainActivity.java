@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (id == R.id.buttonCandidato){
-            Toast.makeText(getApplicationContext(), "Candidato", Toast.LENGTH_SHORT);
+            Intent intent = new Intent(this, ListarCandidatoActivity.class);
+            startActivity(intent);
         }
 
     }

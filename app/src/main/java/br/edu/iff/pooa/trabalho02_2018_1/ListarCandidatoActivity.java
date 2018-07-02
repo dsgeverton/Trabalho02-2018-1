@@ -12,9 +12,7 @@ import java.util.List;
 
 import br.edu.iff.pooa.trabalho02_2018_1.adapter.CandidatoAdapter;
 import br.edu.iff.pooa.trabalho02_2018_1.adapter.ClickRecyclerViewListener;
-import br.edu.iff.pooa.trabalho02_2018_1.adapter.EleitorAdapter;
 import br.edu.iff.pooa.trabalho02_2018_1.model.Candidato;
-import br.edu.iff.pooa.trabalho02_2018_1.model.Eleitor;
 import io.realm.Realm;
 
 public class ListarCandidatoActivity extends AppCompatActivity implements ClickRecyclerViewListener {
@@ -24,7 +22,7 @@ public class ListarCandidatoActivity extends AppCompatActivity implements ClickR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_eleitor);
+        setContentView(R.layout.activity_listar_candidato);
 
         realm = Realm.getDefaultInstance();
 
