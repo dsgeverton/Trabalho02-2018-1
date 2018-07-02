@@ -106,7 +106,6 @@ public class InfoCandidatoActivity extends AppCompatActivity implements View.OnC
             } else{
                 atualizar();
                 finish();
-                Toast.makeText(getApplicationContext(), "ue!", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -189,7 +188,7 @@ public class InfoCandidatoActivity extends AppCompatActivity implements View.OnC
             mViewHolder.numeroUrna.setText(candidato.getNumeroUrna());
             mViewHolder.cargo.setText(candidato.getCargo());
             mViewHolder.numeroVotos.setInputType(InputType.TYPE_CLASS_TEXT);
-            mViewHolder.numeroVotos.setText(candidato.getNumeroVotos());
+            mViewHolder.numeroVotos.setText(String.valueOf(candidato.getNumeroVotos()));
             mViewHolder.estadoCandidato.setText(candidato.getUf());
             mViewHolder.municipioCandidato.setText(candidato.getMunicipio());
         }

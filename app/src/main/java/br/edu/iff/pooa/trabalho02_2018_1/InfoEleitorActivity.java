@@ -109,7 +109,6 @@ public class InfoEleitorActivity extends AppCompatActivity implements View.OnCli
             } else{
                 atualizar();
                 finish();
-                Toast.makeText(getApplicationContext(), "ue!", Toast.LENGTH_SHORT).show();
             }
         }
 
