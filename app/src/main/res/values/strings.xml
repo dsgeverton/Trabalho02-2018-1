@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Trabalho02-2018-1</string>
     <string name="eleitores">Eleitores</string>
+    <string name="candidatos">Candidatos</string>
 </resources>
