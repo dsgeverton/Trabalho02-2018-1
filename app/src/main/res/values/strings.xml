@@ -7,4 +7,13 @@
     <string name="secao">Seção</string>
     <string name="zona">Zona:</string>
     <string name="t_secao">Seção:</string>
+    <string name="info_n_t_tulo">Nº Título</string>
+    <string name="info_zona">Zona</string>
+    <string name="info_se_o">Seção</string>
+    <string name="info_munic_pio">Município</string>
+    <string name="info_salvar">Salvar</string>
+    <string name="info_data_nascimento">Data Nascimento</string>
+    <string name="info_nome_da_m_e">Nome da Mãe</string>
+    <string name="info_nome">Nome</string>
+    <string name="info_editar_conte_do">Editar Conteúdo</string>
 </resources>

@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListarEleitorActivity"></activity>
+        <activity android:name=".ListarEleitorActivity" />
+        <activity android:name=".InfoEleitorActivity"></activity>
     </application>
 
 </manifest>
