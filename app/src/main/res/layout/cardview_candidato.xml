@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Nome"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:text="Everton da Silva"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/nome"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewNomeCandidato"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="142254464"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Partido"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/partido"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeCandidato" />
 
     <TextView
@@ -37,14 +37,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textViewPartidoCandidato"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Zona"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/cargo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPartidoCandidato" />
+        app:layout_constraintStart_toEndOf="@+id/cargo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumeroUrnaCandidato" />
 
     <TextView
         android:id="@+id/textViewNumeroUrnaCandidato"
@@ -52,13 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textViewPartidoCandidato"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Seção"
+        android:layout_marginTop="4dp"
+        android:text="0123456789"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewPartidoCandidato"
+        app:layout_constraintStart_toEndOf="@+id/urna"
         app:layout_constraintTop_toBottomOf="@+id/textViewPartidoCandidato" />
 
     <TextView
@@ -68,24 +64,34 @@
         android:layout_alignBaseline="@id/textViewNomeCandidato"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
         android:text="Nome:"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/partido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/textViewPartidoCandidato"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Título:"
+        android:layout_marginTop="4dp"
+        android:text="Partido:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome" />
+
+    <TextView
+        android:id="@+id/urna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewPartidoCandidato"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="4dp"
+        android:text="Nº da Urna:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/partido" />
 
     <TextView
         android:id="@+id/cargo"
@@ -94,21 +100,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
 
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="19dp"
-        android:text="Seção:"
-        app:layout_constraintEnd_toStartOf="@+id/textViewNumeroUrnaCandidato"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPartidoCandidato" />
+        android:layout_marginTop="4dp"
+        android:text="Cargo:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/urna" />
 
-    <TextView
-        android:id="@+id/urna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textViewPartidoCandidato"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="19dp"
-        android:text="Zona:"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCargoCandidato"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPartidoCandidato" />
 </android.support.constraint.ConstraintLayout>
