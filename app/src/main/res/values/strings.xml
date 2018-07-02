@@ -2,4 +2,9 @@
     <string name="app_name">Trabalho02-2018-1</string>
     <string name="eleitores">Eleitores</string>
     <string name="candidatos">Candidatos</string>
+    <string name="t_tulo">Título:</string>
+    <string name="t_nome">Nome:</string>
+    <string name="secao">Seção</string>
+    <string name="zona">Zona:</string>
+    <string name="t_secao">Seção:</string>
 </resources>

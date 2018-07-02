@@ -41,7 +41,7 @@
         android:layout_marginTop="4dp"
         android:text="Zona"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/cargo"
+        app:layout_constraintStart_toEndOf="@+id/secao"
         app:layout_constraintTop_toBottomOf="@+id/textViewNumeroUrnaCandidato" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_marginTop="4dp"
         android:text="0123456789"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/urna"
+        app:layout_constraintStart_toEndOf="@+id/zona"
         app:layout_constraintTop_toBottomOf="@+id/textViewPartidoCandidato" />
 
     <TextView
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nome" />
 
     <TextView
-        android:id="@+id/urna"
+        android:id="@+id/zona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/textViewPartidoCandidato"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/partido" />
 
     <TextView
-        android:id="@+id/cargo"
+        android:id="@+id/secao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -104,6 +104,6 @@
         android:text="Cargo:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/urna" />
+        app:layout_constraintTop_toBottomOf="@+id/zona" />
 
 </android.support.constraint.ConstraintLayout>
