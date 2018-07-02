@@ -8,7 +8,7 @@ import io.realm.annotations.PrimaryKey;
 public class Candidato extends RealmObject implements Serializable {
 
     @PrimaryKey
-    private int id;
+    private String id;
     private String nome;
     private String partido;
     private String numeroUrna;
@@ -29,11 +29,11 @@ public class Candidato extends RealmObject implements Serializable {
         this.municipio = municipio;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
